@@ -4,6 +4,7 @@ const port = 3000;
 const path = require('path');
 const method_override = require('method-override');
 const ejs_mate = require('ejs-mate');
+const session = require('express-session');
 
 const ExpressError = require('./utils/expressError');
 
@@ -33,6 +34,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(method_override('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
+const sessionConfig = {
+    secret: 'thisshouldbeabettersecret',
+    resave: false,
+
+}
+app.use(session({}))
 
 app.engine('ejs', ejs_mate);
 
