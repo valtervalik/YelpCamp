@@ -5,10 +5,11 @@ const path = require('path');
 const method_override = require('method-override');
 const ejs_mate = require('ejs-mate');
 
-const ExpressError = require('./utils/expressError')
+const ExpressError = require('./utils/expressError');
 
 //importar rutas
-const campgroundsRoutes = require('./routes/campgrounds')
+const campgroundsRoutes = require('./routes/campgrounds');
+const reviewsRoutes = require('./routes/reviews');
 
 const mongoose = require('mongoose');
 
@@ -31,12 +32,14 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(method_override('_method'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.engine('ejs', ejs_mate);
 
 
 //campgrounds Routes
 app.use('/campgrounds', campgroundsRoutes);
+app.use('/campgrounds/:id/reviews', reviewsRoutes);
 
 //middleware
 app.all('*', (req, res, next) => {
