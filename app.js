@@ -62,6 +62,7 @@ passport.deserializeUser(User.deserializeUser());
 app.engine('ejs', ejs_mate);
 
 app.use((req, res, next) => {
+    res.locals.currentUser = req.user;
     res.locals.success = req.flash('success');
     res.locals.error = req.flash('error');
     next()
@@ -83,5 +84,5 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(port, () => {
-    console.log(`Serving on port ${port}`)
+    console.log(`Serving on localhost:${port}/campgrounds`)
 });
