@@ -1,5 +1,5 @@
 <% layout('layouts/boilerplate') %>
-    <h1 class="text-center mb-5">All Campgrounds</h1>
+    <h1 class="text-center mb-5 mt-5">All Campgrounds</h1>
 
     <% for(let c of campgrounds) { %>
         <div class="card mb-3">
@@ -8,23 +8,28 @@
                     <div class="col-md-4">
                         <img src="<%= c.images[0].url %>" class="img-fluid" alt="">
                     </div>
-                    <% } %>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    <%= c.title %>
-                                </h5>
-                                <p class="card-text">
-                                    <%= c.description %>
-                                </p>
-                                <p class="card-text">
-                                    <small class="text-muted">
-                                        <%= c.location %>
-                                    </small>
-                                </p>
-                                <a class="btn btn-primary" href="/campgrounds/<%= c._id %>">View <%= c.title %> </a>
-                            </div>
+                    <% } else {%>
+                        <div class="col-md-4">
+                            <img src="https://res.cloudinary.com/dsknqsk7x/image/upload/v1673637373/YelpCamp/headway-5QgIuuBxKwM-unsplash_nabncz.jpg"
+                                class="img-fluid" alt="">
                         </div>
+                        <% } %>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <%= c.title %>
+                                    </h5>
+                                    <p class="card-text">
+                                        <%= c.description %>
+                                    </p>
+                                    <p class="card-text">
+                                        <small class="text-muted">
+                                            <%= c.location %>
+                                        </small>
+                                    </p>
+                                    <a class="btn btn-primary" href="/campgrounds/<%= c._id %>">View <%= c.title %> </a>
+                                </div>
+                            </div>
             </div>
         </div>
         <% } %>
