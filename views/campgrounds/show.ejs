@@ -121,6 +121,7 @@
     <!-- crear una variable con el token para usarla en el archivo javascript que inicializa el mapa -->
     <script>
         const mapToken = '<%-process.env.MAPBOX_TOKEN%>';
+        const campground = <%- JSON.stringify(campground) %>
     </script>
 
     <script src="/javaScripts/showPageMap.js"></script>
