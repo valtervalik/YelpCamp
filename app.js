@@ -88,5 +88,5 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(port, () => {
-    console.log(`Serving on localhost:${port}/campgrounds`)
+    console.log(`Serving on http://localhost:${port}/campgrounds`)
 });
