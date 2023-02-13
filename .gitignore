@@ -4068,4 +4068,4 @@ node_modules/joi/lib/types/string.js
 node_modules/joi/lib/types/symbol.js
 node_modules/
 .env
-seeds
+seeds/
