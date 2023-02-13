@@ -4068,7 +4068,7 @@ node_modules/joi/lib/types/string.js
 node_modules/joi/lib/types/symbol.js
 node_modules/
 .env
-seeds/cities.js
-seeds/index.js
-seeds/seedHelpers.js
-seeds/
+/seeds/cities.js
+/seeds/index.js
+/seeds/seedHelpers.js
+/seeds/
