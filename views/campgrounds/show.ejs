@@ -2,7 +2,6 @@
 
     <div class="row mt-5">
         <div class="col-6 mb-5">
-            <div id='map' style='width: 400px; height: 300px;'></div>
 
             <div id="campgroundCarousel" class="carousel slide">
                 <% if(campground.images[0]) {%>
@@ -67,6 +66,8 @@
             </div>
 
         </div>
+        <div id='map' style='width: 400px; height: 300px;'></div>
+
         <div class="col-6 mb-5">
             <% if(currentUser) {%>
                 <h2 class="mb-4">Rate this campground</h2>
