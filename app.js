@@ -70,6 +70,10 @@ app.use((req, res, next) => {
 	next();
 });
 //Routes
+app.get('/', (req, res) => {
+	res.render('home');
+});
+
 app.use('/campgrounds', campgroundsRoutes);
 app.use('/campgrounds/:id/reviews', reviewsRoutes);
 app.use('/', usersRoutes);
