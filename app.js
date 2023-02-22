@@ -14,6 +14,8 @@ const passport = require('passport');
 const passportLocal = require('passport-local');
 const User = require('./models/user');
 
+const mongoSanitize = require('express-mongo-sanitize');
+
 const ExpressError = require('./utils/expressError');
 
 //importar rutas
@@ -54,6 +56,8 @@ const sessionConfig = {
 };
 app.use(session(sessionConfig));
 app.use(flash());
+
+app.use(mongoSanitize());
 
 app.use(passport.initialize());
 app.use(passport.session());
