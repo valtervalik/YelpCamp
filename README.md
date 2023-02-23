@@ -3,8 +3,9 @@ Express app
 
 To execute the code:
 - Open your terminal.
-- First run node /seeds/index.js to seed the database. You need to have mongoDB installed.
-- Last run node app.js.
+- Run npm i to install all the dependencies.
+- Run node /seeds/index.js to seed the database. You need to have mongoDB installed.
+- Run node app.js to start the server in development mode.
 - Open your browser at http://127.0.0.1:3080
 
 Thank you for passing by.
