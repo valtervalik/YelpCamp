@@ -1,5 +1,7 @@
 <% layout('layouts/boilerplate') %>
 
+<link rel="stylesheet" href="/stylesheets/show.css" />
+
 <div class="row mt-5">
 	<div class="col-6 mb-5">
 		<div id="campgroundCarousel" class="carousel slide">
@@ -39,19 +41,23 @@
 			</button>
 			<% } %>
 		</div>
-		<div class="card">
+		<div class="card bg-dark">
 			<div class="card-body">
-				<h5 class="card-title">
+				<h5 class="card-title text-light">
 					<%= campground.title %> -
 					<span class="text-muted"
 						>Submitted by <b> <%= campground.author.username %> </b></span
 					>
 				</h5>
-				<p class="card-text"><%= campground.description %></p>
+				<p class="card-text text-light"><%= campground.description %></p>
 			</div>
 			<ul class="list-group list-group-flush">
-				<li class="list-group-item text-muted"><%= campground.location %></li>
-				<li class="list-group-item">$<%= campground.price %>/night</li>
+				<li class="list-group-item text-muted bg-dark">
+					<%= campground.location %>
+				</li>
+				<li class="list-group-item bg-dark text-light">
+					$<%= campground.price %>/night
+				</li>
 			</ul>
 			<% if(currentUser && campground.author.equals(currentUser._id)) {%>
 			<div class="card-body ms-auto">
@@ -75,7 +81,7 @@
 		<div id="map"></div>
 
 		<% if(currentUser) {%>
-		<h2 class="mb-4 mt-4">Rate this campground</h2>
+		<h2 class="mb-4 mt-4 text-light">Rate this campground</h2>
 		<form
 			action="/campgrounds/<%= campground._id %>/reviews"
 			method="POST"
@@ -103,9 +109,9 @@
 			</fieldset>
 
 			<div class="mb-3">
-				<label class="form-label" for="body">Leave a review</label>
+				<label class="form-label text-light" for="body">Leave a review</label>
 				<textarea
-					class="form-control"
+					class="form-control bg-dark text-light"
 					name="review[body]"
 					id="body"
 					cols="30"

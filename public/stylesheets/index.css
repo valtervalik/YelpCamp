@@ -1,0 +1,9 @@
+.indexCard {
+	width: 50%;
+	border: none;
+}
+
+.campgrounds {
+	display: flex;
+	flex-flow: wrap;
+}
