@@ -62,6 +62,42 @@ app.use(flash());
 
 //security
 app.use(mongoSanitize());
+
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new passportLocal(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+app.engine('ejs', ejs_mate);
+
+app.use((req, res, next) => {
+	res.locals.currentUser = req.user;
+	res.locals.success = req.flash('success');
+	res.locals.error = req.flash('error');
+	next();
+});
+//Routes
+app.get('/', (req, res) => {
+	res.render('home');
+});
+
+app.use('/campgrounds', campgroundsRoutes);
+app.use('/campgrounds/:id/reviews', reviewsRoutes);
+app.use('/', usersRoutes);
+
+//middleware
+app.all('*', (req, res, next) => {
+	next(new ExpressError('Page Not Found', 404));
+});
+
+app.use((err, req, res, next) => {
+	const { statusCode = 500 } = err;
+	if (!err.message) err.message = 'Something Went Wrong';
+	res.status(statusCode).render('error', { err });
+});
+
+//security
 app.use(helmet());
 
 const scriptSrcUrls = [
@@ -114,40 +150,6 @@ app.use(
 app.use(helmet.crossOriginEmbedderPolicy({ policy: 'credentialless' }));
 app.use(helmet.crossOriginOpenerPolicy({ policy: 'unsafe-none' }));
 app.use(helmet.crossOriginResourcePolicy({ policy: 'cross-origin' }));
-
-app.use(passport.initialize());
-app.use(passport.session());
-passport.use(new passportLocal(User.authenticate()));
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
-
-app.engine('ejs', ejs_mate);
-
-app.use((req, res, next) => {
-	res.locals.currentUser = req.user;
-	res.locals.success = req.flash('success');
-	res.locals.error = req.flash('error');
-	next();
-});
-//Routes
-app.get('/', (req, res) => {
-	res.render('home');
-});
-
-app.use('/campgrounds', campgroundsRoutes);
-app.use('/campgrounds/:id/reviews', reviewsRoutes);
-app.use('/', usersRoutes);
-
-//middleware
-app.all('*', (req, res, next) => {
-	next(new ExpressError('Page Not Found', 404));
-});
-
-app.use((err, req, res, next) => {
-	const { statusCode = 500 } = err;
-	if (!err.message) err.message = 'Something Went Wrong';
-	res.status(statusCode).render('error', { err });
-});
 
 app.listen(port, () => {
 	console.log(`Serving on http://localhost:${port}`);
