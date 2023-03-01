@@ -14,6 +14,7 @@ const passport = require('passport');
 const passportLocal = require('passport-local');
 const User = require('./models/user');
 const helmet = require('helmet');
+const cors = require('cors');
 
 const mongoSanitize = require('express-mongo-sanitize');
 
@@ -114,6 +115,18 @@ app.use(
 app.use(helmet.crossOriginEmbedderPolicy({ policy: 'credentialless' }));
 app.use(helmet.crossOriginOpenerPolicy({ policy: 'unsafe-none' }));
 app.use(helmet.crossOriginResourcePolicy({ policy: 'cross-origin' }));
+
+app.use(cors());
+app.use((req, res, next) => {
+	res.header('Access-Control-Allow-Origin', '*');
+	res.header(
+		'Access-Control-Allow-Headers',
+		'Authorization, X-API-KEY, Origin, 	X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-	Method'
+	);
+	res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+	res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
+	next();
+});
 
 app.use(passport.initialize());
 app.use(passport.session());
