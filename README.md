@@ -1,4 +1,11 @@
 # YelpCamp
 Express app
 
-This follows the same rules as master branch. Just added a bit of basic security and optimization.
+To execute the code:
+- Open your terminal.
+- Run <code>npm i</code> to install all the dependencies.
+- Run <code>node /seeds/index.js</code> to seed the database. You need to have mongoDB installed.
+- Run <code>node app.js</code> to start the server in development mode.
+- Open your browser at http://127.0.0.1:3080
+
+Thank you for passing by.
