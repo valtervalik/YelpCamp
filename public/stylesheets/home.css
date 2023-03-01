@@ -1,3 +1,19 @@
-header {
+body {
+	background-image: linear-gradient(
+			rgba(0, 0, 0, 0),
+			rgba(0, 0, 0, 0.7),
+			rgba(0, 0, 0, 0)
+		),
+		url('/scott-goodwill-y8Ngwq34_Ak-unsplash.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+
+.header {
 	margin-top: 100px;
+}
+
+.card {
+	background: none !important;
 }

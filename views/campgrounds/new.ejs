@@ -4,7 +4,7 @@
         <div class="col-6 offset-3">
             <form action="/campgrounds" method="POST" class="needs-validation" enctype="multipart/form-data" novalidate>
                 <div class="mb-3">
-                    <label class="form-label" for="title">Title</label>
+                    <label class="form-label text-light" for="title">Title</label>
                     <input class="form-control" type="text" name="campground[title]" id="title" required>
                     <div class="valid-feedback">
                         Looks good!
@@ -14,7 +14,7 @@
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label" for="location">Location</label>
+                    <label class="form-label text-light" for="location">Location</label>
                     <input class="form-control" type="text" name="campground[location]" id="location" required>
                     <div class="valid-feedback">
                         Looks good!
@@ -23,7 +23,7 @@
                         The field above can't be empty
                     </div>
                 </div>
-                <label class="form-label" for="image">Upload Image(s)</label>
+                <label class="form-label text-light" for="image">Upload Image(s)</label>
                 <div class="input-group mb-3">
                     <input type="file" class="form-control" name="campground[images]" id="image" multiple>
                     <div class="valid-feedback">
@@ -34,7 +34,7 @@
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label" for="description">Description</label>
+                    <label class="form-label text-light" for="description">Description</label>
                     <textarea class="form-control" type="text" name="campground[description]" id="description"
                         required></textarea>
                     <div class="valid-feedback">
@@ -45,7 +45,7 @@
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label" for="price">Campground Price</label>
+                    <label class="form-label text-light" for="price">Campground Price</label>
                     <div class="input-group">
                         <span class="input-group-text">$</span>
                         <input type="number" class="form-control" placeholder="0.00" name="campground[price]" id="price"
